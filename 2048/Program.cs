@@ -14,13 +14,11 @@ namespace _2048
         {
             model = new Model(4);
             model.Start();
-            model.points = 0;
 
             while (true)
             {
-                Show();
-                var key = Console.ReadKey().Key;
-                switch (key)
+                Show(model);
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.W: model.Up(); break;
                     case ConsoleKey.S: model.Down(); break;
@@ -31,7 +29,7 @@ namespace _2048
             }
         }
 
-        void Show() 
+        void Show(Model model) 
         {
             Console.SetCursorPosition(0, 0);
             for (var x = 0; x < model.size; x++)
@@ -42,11 +40,11 @@ namespace _2048
             }
             if (model.IsGameOver())
             {
-                Console.WriteLine("\nОчки: ", model.points);
+                Console.WriteLine($"\nИгра окончена\nВы набрали {model.points} очков");
             }
             else
             {
-                Console.WriteLine($"\nИгра окончена\nВы набрали {model.points} очков");
+                Console.WriteLine("\nОчки: {0}", model.points);
             }
         }
     }
