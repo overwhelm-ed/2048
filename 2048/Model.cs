@@ -47,6 +47,16 @@ namespace _2048
             }
         }
 
+        internal void Move()
+        {
+
+        }
+
+        internal void Join()
+        {
+
+        }
+
         internal void Up()
         {
             for (var x = 0; x < size; x++)
