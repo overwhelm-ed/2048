@@ -14,6 +14,7 @@ namespace _2048
         {
             model = new Model(4);
             model.Start();
+            model.points = 0;
 
             while (true)
             {

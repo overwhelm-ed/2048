@@ -24,7 +24,7 @@ namespace _2048
             }
         }
 
-        internal void Start()
+        public void Start()
         {
             for (var x = 0; x < size; x++)
                 for (var y = 0; y < size; y++)
@@ -47,38 +47,57 @@ namespace _2048
             }
         }
 
-        internal void Move()
+        public void Move(int x, int y, int dx, int dy)
         {
-
+            if (map.Get(x, y) > 0)
+                while (map.Get(x + dx, y + dy) == 0)
+                {
+                    map.Set(x + dx, y + dy, map.Get(x, y));
+                    map.Set(x, y, 0);
+                    x += dx;
+                    y += dy;
+                }
         }
 
-        internal void Join()
+        public void Join(int x, int y, int dx, int dy)
         {
-
+            if (map.Get(x, y) > 0)
+                if (map.Get(x + dx, y + dy) == map.Get(x, y))
+                {
+                    map.Set(x + dx, y + dy, map.Get(x, y));
+                    points += map.Get(x, y);
+                    while (map.Get(x - dx, y - dy) > 0)
+                    {
+                        map.Set(x, y, map.Get(x - dx, y - dy));
+                        x -= dx;
+                        y -= dy;
+                    }
+                    map.Set(x, y, 0);
+                }
         }
 
-        internal void Up()
+        public void Up()
         {
             for (var x = 0; x < size; x++)
                 for (var y = 0; y < size; y++) { }
         }
 
-        internal void Down()
+        public void Down()
         {
             throw new NotImplementedException();
         }
 
-        internal void Left()
+        public void Left()
         {
             throw new NotImplementedException();
         }
 
-        internal void Right()
+        public void Right()
         {
             throw new NotImplementedException();
         }
 
-        internal bool IsGameOver()
+        public bool IsGameOver()
         {
             return true;
         }
