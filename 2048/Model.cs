@@ -28,6 +28,7 @@ namespace _2048
 
         public void Start()
         {
+            // Создаём пустое поле и добавляем два случайных числа
             for (var x = 0; x < size; x++)
                 for (var y = 0; y < size; y++)
                     map.Set(x, y, 0);
@@ -86,7 +87,7 @@ namespace _2048
 
         public void Up()
         {
-            for (var x = 1; x < size; x++)
+            for (var x = size - 1; x > 0; x--)
             {
                 for (var y = 0; y < size; y++)
                     Move(x, y, -1, 0);
@@ -98,7 +99,7 @@ namespace _2048
 
         public void Down()
         {
-            for (var x = size - 2; x >= 0; x--)
+            for (var x = 0; x < size; x++)
             {
                 for (var y = 0; y < size; y++)
                     Move(x, y, 1, 0);
@@ -110,7 +111,7 @@ namespace _2048
 
         public void Left()
         {
-            for (var y = 1; y < size; y++)
+            for (var y = size; y > 0; y--)
             {
                 for (var x = 0; x < size; x++)
                     Move(x, y, 0, -1);
@@ -122,7 +123,7 @@ namespace _2048
 
         public void Right()
         {
-            for (var y = size - 2; y >= 0; y--)
+            for (var y = 0; y <  size; y++)
             {
                 for (var x = 0; x < size; x++)
                     Move(x, y, 0, 1);
